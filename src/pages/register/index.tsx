@@ -1,25 +1,26 @@
 import React, { useState } from "react";
-import TextInput from "../components/TextInput";
-import Button from "../components/Button";
+import TextInput from "../../components/TextInput";
+import Button from "../../components/Button";
 // @ts-ignore
 import { history } from "umi";
+import './index.css';
 
 export default function () {
-  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   async function submit() {
     try {
-      const res = await fetch('/api/login', {
+      const res = await fetch('/api/register', {
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, name }),
         headers: {
           'Content-Type': 'application/json'
         }
       });
       if (res.status !== 200) {
+
         console.error(await res.text());
         return;
       }
@@ -31,7 +32,7 @@ export default function () {
     }
   }
 
-  return <div className="w-full flex justify-center">
+  return <div className="w-full flex justify-center test" >
     <div className="container lg:px-64 px-8 pt-16">
       <p className="text-3xl font-extrabold">用户登入</p>
       <div className="mt-8">
