@@ -11,12 +11,14 @@ export default function () {
   const [tags, setTags] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
+ // console.log(document.cookie);
+  
   useEffect(() => {
     if (!document.cookie.includes('token')) {
       alert('请先登录');
       history.push('/login');
-    }
-  }, []);
+}
+}, []);
 
   async function submit() {
     try {

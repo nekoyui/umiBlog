@@ -2,6 +2,8 @@ import { UmiApiRequest, UmiApiResponse } from "umi";
 import { PrismaClient } from '@prisma/client'
 import { verifyToken } from "@/utils/jwt";
 
+const secret = 'bec42df4a545ba829c68528e19c1c6282c0dcc11f0577f4c27b582119d7ba2fd';
+
 export default async function (req: UmiApiRequest, res: UmiApiResponse) {
   let prisma: PrismaClient;
   switch (req.method) {
@@ -18,7 +20,7 @@ export default async function (req: UmiApiRequest, res: UmiApiResponse) {
           message: 'Unauthorized'
         })
       }
-      const authorId = (await verifyToken(req.cookies.token)).id;
+      const authorId = (await verifyToken(req.cookies.token,secret)).id;
       prisma = new PrismaClient();
       const newPost = await prisma.post.create({
         data: {
