@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 const secret = 'bec42df4a545ba829c68528e19c1c6282c0dcc11f0577f4c27b582119d7ba2fd';
 // 生成token
 export function signToken(id: number, secret: any,) {
-  console.log(secret, id);
+  //console.log(secret, id);
   
   if (!secret) throw new Error('Environment variable JWT_SECRET is not defined!');
   return new Promise<string>((resolve, reject) => {

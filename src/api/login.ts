@@ -12,6 +12,10 @@ export default async function (req: UmiApiRequest, res: UmiApiResponse) {
         const user = await prisma.user.findUnique({
           where: { email: req.body.email }
         });
+
+     
+
+
         if (!user || !bcrypt.compareSync(req.body.password, user.passwordHash)) {
           return res.status(401).json({
             message: 'Invalid email or password'
