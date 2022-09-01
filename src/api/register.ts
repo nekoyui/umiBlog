@@ -41,6 +41,7 @@ export default async function (req: UmiApiRequest, res: UmiApiResponse) {
           // 把建立成功的用户数据（不包含密码）和 JWT 回传给前端
           res.status(201)
             .setCookie('token', await signToken(user.id, secret))
+            .setCookie('email',req.body.email)
             .json({ ...user, passwordHash: undefined })
 
         }

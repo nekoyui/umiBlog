@@ -13,7 +13,7 @@ type RegisterData = {
   email: string;
   password: string;
   //remember: boolean;
-  avatarUrl?: string;
+  avatarUrl: string;
 }
 export default function () {
   //const [email, setEmail] = useState("");
